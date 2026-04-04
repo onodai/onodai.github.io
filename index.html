@@ -13,6 +13,16 @@ body {
   background: #f7f7f7;
 }
 
+  .header a {
+  color: inherit;        /* 親と同じ色にする */
+  text-decoration: none; /* 下線消す */
+}
+
+.header a:hover {
+  opacity: 0.5;          /* ホバーで薄く */
+  transition: opacity 0.2s;
+}
+
 /* 上のヘッダー */
 .header {
   border: 15px solid #edfee8;
