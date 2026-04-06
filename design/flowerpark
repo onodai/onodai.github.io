@@ -1,0 +1,12 @@
+<img src="../images/flowerpark1.jpg" width="800">
+<img src="../images/flowerpark2.jpg" width="800">
+<img src="../images/flowerpark3.jpg" width="800">
+<p>FlowerPark</p>
+</div>
+
+<style>
+img {
+  display: block;
+  margin-bottom: 20px;
+}
+</style>
