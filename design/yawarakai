@@ -1,0 +1,11 @@
+<img src="../images/yawarakai1.jpg" width="800">
+<img src="../images/yawarakai2.jpg" width="800">
+<p>やわらかい犬</p>
+</div>
+
+<style>
+img {
+  display: block;
+  margin-bottom: 20px;
+}
+</style>
