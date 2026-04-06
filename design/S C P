@@ -1,0 +1,11 @@
+<img src="../images/scp1.jpg" width="800">
+<img src="../images/scp2.jpg" width="800">
+<p>S C P</p>
+</div>
+
+<style>
+img {
+  display: block;
+  margin-bottom: 20px;
+}
+</style>
