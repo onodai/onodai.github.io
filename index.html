@@ -27,6 +27,15 @@ font-family: 'Zen Kaku Gothic New', -apple-system, BlinkMacSystemFont, 'Helvetic
   letter-spacing: 0.1em;
 }
 
+@media (max-width: 768px) {
+
+  .top-nav {
+    padding: 16px 16px;
+    gap: 12px;
+    font-size: 20px;
+    letter-spacing: 0.1em;
+}
+  
 .top-nav span {
   cursor: pointer;
   color: #888;
@@ -114,7 +123,12 @@ main {
   opacity: 0;
   z-index: 50;
 }
-
+@media (max-width: 768px) {
+  .hover-preview {
+    display: none;
+  }
+}
+  
 .hover-preview img {
   width: 100%;
 }
@@ -371,6 +385,23 @@ navItems.forEach(item => {
       previewImg.src = hoverImages[key];
       preview.style.opacity = 1;
     });
+    
+    if (window.innerWidth > 768) {
+  navItems.forEach(item => {
+    const key = item.dataset.section;
+
+    if (hoverImages[key]) {
+      item.addEventListener('mouseenter', () => {
+        previewImg.src = hoverImages[key];
+        preview.style.opacity = 1;
+      });
+
+      item.addEventListener('mouseleave', () => {
+        preview.style.opacity = 0;
+      });
+    }
+  });
+}
 
     item.addEventListener('mouseleave', () => {
       preview.style.opacity = 0;
