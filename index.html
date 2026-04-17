@@ -14,14 +14,16 @@
     body {
       background-color: #fafff8;
       font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-      padding: 32px;
     }
 
-    .container {
+    /* ヘッダー */
+    header {
       display: grid;
       grid-template-columns: 160px 1fr;
       background-color: #e8f5e2;
-      max-width: 580px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     nav {
@@ -37,79 +39,228 @@
       text-decoration: none;
       letter-spacing: 0.02em;
       cursor: pointer;
+      transition: color 0.2s;
     }
 
-    nav a:hover {
+    nav a:hover,
+    nav a.active {
       color: #333;
     }
 
-    .info {
+    .header-info {
       padding: 28px 24px;
     }
 
-    .info p {
+    .header-info p {
       font-size: 13px;
       color: #666;
       line-height: 1.9;
       letter-spacing: 0.02em;
     }
 
-    .image-area {
-      max-width: 580px;
-      margin-top: 32px;
-      min-height: 320px;
+    /* メイン */
+    main {
+      padding: 64px 48px;
+      max-width: 900px;
     }
 
-    .preview-image {
+    .section {
       display: none;
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
     }
 
-    .preview-image.active {
+    .section.active {
       display: block;
+    }
+
+    /* 大ビジュアル */
+    .visual {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-color: #dce8d8;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+
+    .visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* テキストブロック */
+    .text-block {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+    }
+
+    .text-block .label {
+      font-size: 12px;
+      color: #aaa;
+      letter-spacing: 0.08em;
+      padding-top: 4px;
+    }
+
+    .text-block .body {
+      font-size: 14px;
+      color: #555;
+      line-height: 2;
+      letter-spacing: 0.03em;
+    }
+
+    .text-block .body h2 {
+      font-size: 15px;
+      font-weight: 500;
+      color: #444;
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* GoodNews テキストリスト */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      padding: 24px 0;
+      border-top: 0.5px solid #d0dcc8;
+    }
+
+    .news-item .date {
+      font-size: 12px;
+      color: #aaa;
+      letter-spacing: 0.05em;
+      padding-top: 2px;
+    }
+
+    .news-item .news-body {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .news-item .news-title {
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .news-item .news-desc {
+      font-size: 13px;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <div class="container">
+
+  <header>
     <nav>
-      <a href="#" data-target="design">Design</a>
-      <a href="#" data-target="photograph">Photograph</a>
-      <a href="#" data-target="art">Art</a>
-      <a href="#" data-target="goodnews">GoodNews</a>
+      <a href="#" data-section="design">Design</a>
+      <a href="#" data-section="photograph">Photograph</a>
+      <a href="#" data-section="art">Art</a>
+      <a href="#" data-section="goodnews">GoodNews</a>
     </nav>
-    <div class="info">
+    <div class="header-info">
       <p>Graphic Designer, Photographer</p>
       <p>Mail: dai@onokobo.com　TEL: 080-6357-8554</p>
       <p>IG: @onoodai</p>
     </div>
-  </div>
+  </header>
 
-  <div class="image-area">
-    <img class="preview-image" id="design" src="images/design.jpg" alt="Design">
-    <img class="preview-image" id="photograph" src="images/photograph.jpg" alt="Photograph">
-    <img class="preview-image" id="art" src="images/art.jpg" alt="Art">
-    <img class="preview-image" id="goodnews" src="images/goodnews.jpg" alt="GoodNews">
-  </div>
+  <main>
+
+    <!-- Design -->
+    <section class="section" id="design">
+      <div class="visual">
+        <img src="images/design_main.jpg" alt="Design">
+      </div>
+      <div class="text-block">
+        <p class="label">Design</p>
+        <div class="body">
+          <h2>作品タイトルをここに入力</h2>
+          <p>デザインの説明文をここに入力してください。素材、コンセプト、制作背景などを自由に記述できます。複数行にわたるテキストにも対応しています。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photograph -->
+    <section class="section" id="photograph">
+      <div class="visual">
+        <img src="images/photograph_main.jpg" alt="Photograph">
+      </div>
+      <div class="text-block">
+        <p class="label">Photograph</p>
+        <div class="body">
+          <h2>作品タイトルをここに入力</h2>
+          <p>写真の説明文をここに入力してください。撮影場所、機材、コンセプトなどを自由に記述できます。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Art -->
+    <section class="section" id="art">
+      <div class="visual">
+        <img src="images/art_main.jpg" alt="Art">
+      </div>
+      <div class="text-block">
+        <p class="label">Art</p>
+        <div class="body">
+          <h2>作品タイトルをここに入力</h2>
+          <p>アート作品の説明文をここに入力してください。素材、手法、コンセプトなどを自由に記述できます。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GoodNews -->
+    <section class="section" id="goodnews">
+      <div class="news-list">
+        <div class="news-item">
+          <p class="date">2024.04</p>
+          <div class="news-body">
+            <p class="news-title">ニュースタイトルをここに入力</p>
+            <p class="news-desc">ニュースの詳細説明をここに入力してください。展示情報、受賞歴、メディア掲載などを記述できます。</p>
+          </div>
+        </div>
+        <div class="news-item">
+          <p class="date">2024.03</p>
+          <div class="news-body">
+            <p class="news-title">ニュースタイトルをここに入力</p>
+            <p class="news-desc">ニュースの詳細説明をここに入力してください。</p>
+          </div>
+        </div>
+        <div class="news-item">
+          <p class="date">2024.02</p>
+          <div class="news-body">
+            <p class="news-title">ニュースタイトルをここに入力</p>
+            <p class="news-desc">ニュースの詳細説明をここに入力してください。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <script>
-    const links = document.querySelectorAll('nav a[data-target]');
-    const images = document.querySelectorAll('.preview-image');
+    const links = document.querySelectorAll('nav a[data-section]');
+    const sections = document.querySelectorAll('.section');
 
     links.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        const target = link.dataset.target;
-        images.forEach(img => {
-          img.classList.toggle('active', img.id === target);
-        });
-      });
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = link.dataset.section;
 
-      link.addEventListener('mouseleave', () => {
-        images.forEach(img => img.classList.remove('active'));
+        links.forEach(l => l.classList.remove('active'));
+        sections.forEach(s => s.classList.remove('active'));
+
+        link.classList.add('active');
+        document.getElementById(target).classList.add('active');
       });
     });
   </script>
+
 </body>
 </html>
