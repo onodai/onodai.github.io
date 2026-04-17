@@ -1,150 +1,75 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter&family=Klee+One&display=swap" rel="stylesheet">
-  
-<style>
-body {
-  margin: 0;
-   font-family: 'Klee One', sans-serif;
-  color: #555;
-  background: #f7f7f7;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
- a {
-  color: inherit;        /* 親と同じ色にする */
-  text-decoration: none; /* 下線消す */
-}
+    body {
+      background-color: #fafff8;
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      padding: 32px;
+    }
 
-a:hover {
-  opacity: 0.5;          /* ホバーで薄く */
-  transition: opacity 0.2s;
-}
+    .container {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      background-color: #e8f5e2;
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 580px;
+    }
 
-/* 上のヘッダー */
-.header {
-  border: 15px solid #edfee8;
-  padding: 5px 5px;
-  margin: 0px 0px 0px 40px;
-  font-size: 14px;
-  line-height: 1.6;
-}
+    nav {
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
 
-/* 全体構造 */
-.wrapper {
-  display: flex;
-}
+    nav a {
+      font-size: 14px;
+      color: #7a9e7a;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+    }
 
-/* 左の薄緑バー */
-.sidebar {
-  width: 40px;
-  background: #edfee8;
-  min-height: 100vh;
-}
+    nav a:hover {
+      color: #4a6e4a;
+    }
 
-/* メイン */
-.main {
-  flex: 1;
-  padding: 5px 5px;
-}
+    .info {
+      padding: 28px 24px;
+    }
 
-/* タイトル（最初の行） */
-.title {
-  font-size: 16px;
-  margin-bottom: 25px;
-}
-
-/* リスト */
-.item {
-  margin-bottom: 18px;
-  font-size: 14px;
-}
-
-/* セクションの空き */
-.section-gap {
-  margin-top: 40px;
-}
-
-/* 微妙な余白調整（それっぽさ） */
-.small-gap {
-  margin-top: 20px;
-}
-</style>
-
+    .info p {
+      font-size: 13px;
+      color: #7a9e7a;
+      line-height: 1.9;
+      letter-spacing: 0.02em;
+    }
+  </style>
 </head>
-
 <body>
-
-<div class="header">
-  Graphic Designer, Photographer<br>
-  Mail: <a href="mailto:ono.dai@icloud.com">ono.dai@icloud.com</a><br>
-</div>
-  
-<div class="wrapper">
-
-  <div class="sidebar"></div>
-
-  <div class="main">
-
-    <div class="item">
-      <a href="design/5tsuno.html">5つの都市の断面図</a>
+  <div class="container">
+    <nav>
+      <a href="#">Design</a>
+      <a href="#">Photograph</a>
+      <a href="#">Art</a>
+      <a href="#">GoodNews</a>
+    </nav>
+    <div class="info">
+      <p>Graphic Designer, Photographer</p>
+      <p>Mail: dai@onokobo.com　TEL: 080-6357-8554</p>
+      <p>IG: @onoodai</p>
     </div>
-    <div class="item">
-    <a href="design/newfes.html">NEW FES</a>
-    </div>
-    <div class="item">
-    <a href="design/hibeam.html">ハイビーム</a>
-    </div>
-    <div class="item">
-    <a href="design/yawarakai.html">やわらかい犬</a>
-    </div>
-    <div class="item">
-    <a href="design/flowerpark.html">Flower Park</a>
-    </div>
-    <div class="item">
-    <a href="design/scp.html">S C P</a>
-    </div>
-    <div class="item">
-    <a href="design/pooploop.html">pooploop</a>
-    </div>
-    <div class="item">
-    <a href="design/dadaviva.html">dadaviva!!</a>
-    </div>
-    <div class="item">
-    <a href="design/dadabar.html">dadabar</a>
-    </div>
-    
-    <div class="section-gap"></div>
-
-    <div class="item">氈鹿</div>
-
-    <div class="small-gap"></div>
-
-    <div class="item">How to make a human</div>
-    <div class="item">時々わたしを(あなたを)みている</div>
-
-    <div class="section-gap"></div>
-
-    <div class="item">One Boiling Point</div>
-    <div class="item">電球</div>
-
-    <div class="section-gap"></div>
-
-     <div class="item">GoodNews</div>
-    <div class="item">cue</div>
-    <div class="item">2024 teaser</div>
-    <div class="item">poster</div>
-    <div class="item">Vol.1</div>
-    <div class="item">Vol.2</div>
-    <div class="item">Vol.3</div>
-    
-
   </div>
-
-</div>
-
 </body>
 </html>
