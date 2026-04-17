@@ -17,64 +17,30 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 }
 
-/* ===== 共通幅（←ここが揃えのコア） ===== */
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-/* ===== ヘッダー ===== */
-header {
-  padding: 32px 48px 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background-color: #fafff8;
-}
-
-.header-inner {
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  background-color: #e8f5e2;
-  max-width: 580px;
-}
-
-/* nav */
-nav {
-  padding: 28px 24px;
+/* ===== ナビ（D P A G C） ===== */
+.top-nav {
+  padding: 32px 48px;
   display: flex;
-  flex-direction: column;
-  gap: 24px;
+  gap: 16px;
+  font-size: 28px;
+  letter-spacing: 0.1em;
 }
 
-nav a {
-  font-size: 14px;
-  color: #666;
-  text-decoration: none;
+.top-nav span {
   cursor: pointer;
+  color: #888;
 }
 
-nav a.active {
-  color: #333;
-}
-
-/* info */
-.header-info {
-  padding: 28px 24px;
-}
-
-.header-info p {
-  font-size: 13px;
-  color: #666;
-  line-height: 1.9;
+.top-nav span.active {
+  color: #000;
 }
 
 /* ===== メイン ===== */
 main {
-  padding: 64px 48px;
+  padding: 32px 48px 64px;
+  max-width: 900px;
 }
 
-/* セクション */
 .section {
   display: none;
 }
@@ -83,21 +49,19 @@ main {
   display: block;
 }
 
-/* ===== ビジュアル ===== */
+/* ===== 画像 ===== */
 .visual {
-  width: 100%;
-  aspect-ratio: auto;
-  overflow: hidden;
   margin-bottom: 32px;
 }
 
- .visual img {
+.visual img {
   width: auto;
   height: auto;
-  max-width: 1000px;
+  max-width: 100%;
+  display: block;
 }
 
-/* ===== 作品インフォ（左詰め） ===== */
+/* ===== 作品情報 ===== */
 .work-info {
   display: flex;
   flex-direction: column;
@@ -112,7 +76,6 @@ main {
 
 .title {
   font-size: 18px;
-  color: #222;
   cursor: pointer;
 }
 
@@ -126,30 +89,6 @@ main {
   line-height: 1.8;
 }
 
-.link {
-  font-size: 13px;
-  margin-top: 8px;
-}
-
-.link a {
-  color: #2a5bd7;
-  text-decoration: underline;
-}
-
-/* ===== GoodNews ===== */
-.news-item {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 48px;
-  padding: 24px 0;
-  border-top: 0.5px solid #d0dcc8;
-}
-
-.date {
-  font-size: 12px;
-  color: #aaa;
-}
-
 /* ===== ホバー画像 ===== */
 .hover-preview {
   position: fixed;
@@ -157,7 +96,6 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 380px;
-  aspect-ratio: 4 / 3;
   pointer-events: none;
   opacity: 0;
   z-index: 50;
@@ -165,8 +103,6 @@ main {
 
 .hover-preview img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 /* ===== モーダル ===== */
@@ -198,106 +134,133 @@ main {
   line-height: 1.8;
 }
 
-.modal-text {
-  white-space: pre-line;
+/* ===== ぼけ演出 ===== */
+.blur-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 150;
+  overflow: hidden;
+}
+
+.blur-layer span {
+  position: absolute;
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  opacity: 0;
+}
+
+/* 雲アニメ */
+@keyframes floatBlur {
+  0% {
+    transform: translateX(-20vw);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120vw);
+    opacity: 0;
+  }
+}
+
+.blur-layer span:nth-child(1) {
+  width: 180px;
+  height: 180px;
+  top: 20%;
+  animation: floatBlur 25s linear infinite;
+}
+
+.blur-layer span:nth-child(2) {
+  width: 240px;
+  height: 240px;
+  top: 60%;
+  animation: floatBlur 35s linear infinite;
+  animation-delay: 5s;
+}
+
+.blur-layer span:nth-child(3) {
+  width: 140px;
+  height: 140px;
+  top: 40%;
+  animation: floatBlur 30s linear infinite;
+  animation-delay: 10s;
 }
 
 /* ===== スマホ ===== */
 @media (max-width: 768px) {
-  .header-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .news-item {
-    grid-template-columns: 1fr;
+  .top-nav {
+    font-size: 22px;
   }
 }
-
 </style>
 </head>
 
 <body>
 
-<header>
-    <div class="header-inner">
-      <nav>
-        <a href="#" data-section="design" class="active">Design</a>
-        <a href="#" data-section="photograph">Photograph</a>
-        <a href="#" data-section="art">Art</a>
-        <a href="#" data-section="goodnews">GoodNews</a>
-      </nav>
-
-      <div class="header-info">
-        <p>Graphic Designer, Photographer</p>
-        <p>Mail: dai@onokobo.com</p>
-        <p>IG: @onoodai</p>
-      </div>
-    </div>
-  </div>
-</header>
+<!-- ナビ -->
+<div class="top-nav">
+  <span data-section="design" class="active">D</span>
+  <span data-section="photograph">P</span>
+  <span data-section="art">A</span>
+  <span data-section="goodnews">G</span>
+  <span data-section="contact">C</span>
+</div>
 
 <main>
 
-    <!-- Design -->
-    <section class="section active" id="design">
-      <div class="visual">
-        <img src="images/Design_01.jpg">
-      </div>
-
-      <div class="work-info">
-        <p class="artist"><a href="#">your name</a></p>
-
-        <p class="title" data-caption="ここに作品の説明を書く&#10;改行も可能">
-          <em>work title, 2025</em>
-        </p>
-
-        <p class="meta">
-          digital / print<br>
-          size info
-        </p>
-      </div>
-    </section>
-
-    <!-- Photograph -->
-    <section class="section" id="photograph">
-      <div class="visual">
-        <img src="images/Photograph_01.jpg">
-      </div>
-
-      <div class="work-info">
-        <p class="artist"><a href="#">your name</a></p>
-
-        <p class="title" data-caption="写真の説明">
-          <em>photo title, 2025</em>
-        </p>
-
-        <p class="meta">
-          camera / location
-        </p>
-      </div>
-    </section>
-
-    <!-- Art -->
-    <section class="section" id="art">
-      <div class="visual">
-        <img src="images/Art_01.jpg">
-      </div>
-
-      <div class="work-info">
-        <p class="artist"><a href="#">your name</a></p>
-
-        <p class="title" data-caption="アートの説明">
-          <em>art title, 2025</em>
-        </p>
-
-        <p class="meta">
-          oil on canvas<br>
-          size info
-        </p>
-      </div>
-    </section>
-
+<!-- Design -->
+<section class="section active" id="design">
+  <div class="visual">
+    <img src="images/Design_01.jpg">
   </div>
+
+  <div class="work-info">
+    <p class="artist"><a href="#">your name</a></p>
+    <p class="title" data-caption="作品説明">
+      <em>work title, 2025</em>
+    </p>
+    <p class="meta">digital / print</p>
+  </div>
+</section>
+
+<!-- Photograph -->
+<section class="section" id="photograph">
+  <div class="visual">
+    <img src="images/Photograph_01.jpg">
+  </div>
+
+  <div class="work-info">
+    <p class="artist"><a href="#">your name</a></p>
+    <p class="title" data-caption="写真説明">
+      <em>photo title, 2025</em>
+    </p>
+    <p class="meta">camera / location</p>
+  </div>
+</section>
+
+<!-- Art -->
+<section class="section" id="art">
+  <div class="visual">
+    <img src="images/Art_01.jpg">
+  </div>
+
+  <div class="work-info">
+    <p class="artist"><a href="#">your name</a></p>
+    <p class="title" data-caption="アート説明">
+      <em>art title, 2025</em>
+    </p>
+    <p class="meta">oil on canvas</p>
+  </div>
+</section>
+
 </main>
 
 <!-- ホバー画像 -->
@@ -312,10 +275,16 @@ main {
   </div>
 </div>
 
-<script>
-const links = document.querySelectorAll('nav a');
-const sections = document.querySelectorAll('.section');
+<!-- ぼけ -->
+<div class="blur-layer">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 
+<script>
+const navItems = document.querySelectorAll('.top-nav span');
+const sections = document.querySelectorAll('.section');
 const preview = document.querySelector('.hover-preview');
 const previewImg = preview.querySelector('img');
 
@@ -328,28 +297,27 @@ const hoverImages = {
   art: 'images/Art_thumb_01.jpg'
 };
 
-// ナビ操作
-links.forEach(link => {
-  const key = link.dataset.section;
+// ナビ
+navItems.forEach(item => {
+  const key = item.dataset.section;
 
-  link.addEventListener('click', e => {
-    e.preventDefault();
-
-    links.forEach(l => l.classList.remove('active'));
+  item.addEventListener('click', () => {
+    navItems.forEach(i => i.classList.remove('active'));
     sections.forEach(s => s.classList.remove('active'));
 
-    link.classList.add('active');
-    document.getElementById(key).classList.add('active');
+    item.classList.add('active');
+    const target = document.getElementById(key);
+    if (target) target.classList.add('active');
   });
 
-  // ホバー画像（即表示・即消え）
+  // ホバー画像
   if (hoverImages[key]) {
-    link.addEventListener('mouseenter', () => {
+    item.addEventListener('mouseenter', () => {
       previewImg.src = hoverImages[key];
       preview.style.opacity = 1;
     });
 
-    link.addEventListener('mouseleave', () => {
+    item.addEventListener('mouseleave', () => {
       preview.style.opacity = 0;
     });
   }
