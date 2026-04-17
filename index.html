@@ -1,309 +1,317 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    body {
-      background-color: #fafff8;
-      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-    }
+body {
+  background-color: #fafff8;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+}
 
-    /* ===== ヘッダー ===== */
-    header {
-      padding: 32px 32px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background-color: #fafff8;
-    }
+/* ===== 共通幅（←ここが揃えのコア） ===== */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
 
-    .header-inner {
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      background-color: #e8f5e2;
-      max-width: 580px;
-    }
+/* ===== ヘッダー ===== */
+header {
+  padding: 32px 0 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #fafff8;
+}
 
-    nav {
-      padding: 28px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
+.header-inner {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  background-color: #e8f5e2;
+}
 
-    nav a {
-      font-size: 14px;
-      color: #666;
-      text-decoration: none;
-      cursor: pointer;
-      transition: color 0.2s;
-    }
+/* nav */
+nav {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 
-    nav a:hover,
-    nav a.active {
-      color: #333;
-    }
+nav a {
+  font-size: 14px;
+  color: #666;
+  text-decoration: none;
+  cursor: pointer;
+}
 
-    .header-info {
-      padding: 28px 24px;
-    }
+nav a.active {
+  color: #333;
+}
 
-    .header-info p {
-      font-size: 13px;
-      color: #666;
-      line-height: 1.9;
-    }
+/* info */
+.header-info {
+  padding: 28px 24px;
+}
 
-    /* ===== メイン ===== */
-    main {
-      padding: 64px 48px;
-      max-width: 900px;
-    }
+.header-info p {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.9;
+}
 
-    .section {
-      display: none;
-    }
+/* ===== メイン ===== */
+main {
+  padding: 64px 0;
+}
 
-    .section.active {
-      display: block;
-    }
+/* セクション */
+.section {
+  display: none;
+}
 
-    /* ===== ビジュアル ===== */
-    .visual {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background-color: #dce8d8;
-      overflow: hidden;
-      margin-bottom: 32px;
-    }
+.section.active {
+  display: block;
+}
 
-    .visual img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+/* ===== ビジュアル ===== */
+.visual {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #dce8d8;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
 
-    /* ===== 作品インフォ ===== */
-    .text-block {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 48px;
-    }
+.visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    /* ← label削除済み */
+/* ===== 作品インフォ（左詰め） ===== */
+.work-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
 
-    .work-info {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
+.artist a {
+  font-size: 14px;
+  color: #2a5bd7;
+  text-decoration: underline;
+}
 
-    .artist a {
-      font-size: 14px;
-      color: #2a5bd7;
-      text-decoration: underline;
-    }
+.title {
+  font-size: 18px;
+  color: #222;
+  cursor: pointer;
+}
 
-    .title {
-      font-size: 18px;
-      color: #222;
-    }
+.title:hover {
+  opacity: 0.6;
+}
 
-    .meta {
-      font-size: 13px;
-      color: #555;
-      line-height: 1.8;
-    }
+.meta {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.8;
+}
 
-    .link {
-      font-size: 13px;
-      margin-top: 8px;
-    }
+.link {
+  font-size: 13px;
+  margin-top: 8px;
+}
 
-    .link a {
-      color: #2a5bd7;
-      text-decoration: underline;
-    }
+.link a {
+  color: #2a5bd7;
+  text-decoration: underline;
+}
 
-    /* ===== GoodNews ===== */
-    .news-item {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 48px;
-      padding: 24px 0;
-      border-top: 0.5px solid #d0dcc8;
-    }
+/* ===== GoodNews ===== */
+.news-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 48px;
+  padding: 24px 0;
+  border-top: 0.5px solid #d0dcc8;
+}
 
-    .date {
-      font-size: 12px;
-      color: #aaa;
-    }
+.date {
+  font-size: 12px;
+  color: #aaa;
+}
 
-    .news-title {
-      font-weight: 500;
-      margin-bottom: 6px;
-    }
+/* ===== ホバー画像 ===== */
+.hover-preview {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  aspect-ratio: 4 / 3;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 50;
+}
 
-    .news-desc {
-      font-size: 13px;
-      color: #888;
-    }
+.hover-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    /* ===== ホバー画像 ===== */
-    .hover-preview {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 380px;
-      aspect-ratio: 4 / 3;
-      pointer-events: none;
-      opacity: 0;
-      transition: none;
-      z-index: 50;
-    }
+/* ===== モーダル ===== */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 200;
+}
 
-    .hover-preview img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+.modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
 
-    /* ===== スマホ ===== */
-    @media (max-width: 768px) {
-      .text-block,
-      .news-item {
-        grid-template-columns: 1fr;
-      }
-    }
+.modal-content {
+  background: #fff;
+  padding: 32px;
+  max-width: 480px;
+  font-size: 14px;
+  line-height: 1.8;
+}
 
-  </style>
+.modal-text {
+  white-space: pre-line;
+}
+
+/* ===== スマホ ===== */
+@media (max-width: 768px) {
+  .header-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .news-item {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="header-inner">
-    <nav>
-      <a href="#" data-section="design" class="active">Design</a>
-      <a href="#" data-section="photograph">Photograph</a>
-      <a href="#" data-section="art">Art</a>
-      <a href="#" data-section="goodnews">GoodNews</a>
-    </nav>
+  <div class="container">
+    <div class="header-inner">
+      <nav>
+        <a href="#" data-section="design" class="active">Design</a>
+        <a href="#" data-section="photograph">Photograph</a>
+        <a href="#" data-section="art">Art</a>
+        <a href="#" data-section="goodnews">GoodNews</a>
+      </nav>
 
-    <div class="header-info">
-      <p>Graphic Designer, Photographer</p>
-      <p>Mail: dai@onokobo.com</p>
-      <p>IG: @onoodai</p>
+      <div class="header-info">
+        <p>Graphic Designer, Photographer</p>
+        <p>Mail: dai@onokobo.com</p>
+        <p>IG: @onoodai</p>
+      </div>
     </div>
   </div>
 </header>
 
 <main>
+  <div class="container">
 
-<!-- Design -->
-<section class="section active" id="design">
-  <div class="visual">
-    <img src="images/Design_01.jpg">
+    <!-- Design -->
+    <section class="section active" id="design">
+      <div class="visual">
+        <img src="images/Design_01.jpg">
+      </div>
+
+      <div class="work-info">
+        <p class="artist"><a href="#">your name</a></p>
+
+        <p class="title" data-caption="ここに作品の説明を書く&#10;改行も可能">
+          <em>work title, 2025</em>
+        </p>
+
+        <p class="meta">
+          digital / print<br>
+          size info
+        </p>
+      </div>
+    </section>
+
+    <!-- Photograph -->
+    <section class="section" id="photograph">
+      <div class="visual">
+        <img src="images/Photograph_01.jpg">
+      </div>
+
+      <div class="work-info">
+        <p class="artist"><a href="#">your name</a></p>
+
+        <p class="title" data-caption="写真の説明">
+          <em>photo title, 2025</em>
+        </p>
+
+        <p class="meta">
+          camera / location
+        </p>
+      </div>
+    </section>
+
+    <!-- Art -->
+    <section class="section" id="art">
+      <div class="visual">
+        <img src="images/Art_01.jpg">
+      </div>
+
+      <div class="work-info">
+        <p class="artist"><a href="#">your name</a></p>
+
+        <p class="title" data-caption="アートの説明">
+          <em>art title, 2025</em>
+        </p>
+
+        <p class="meta">
+          oil on canvas<br>
+          size info
+        </p>
+      </div>
+    </section>
+
   </div>
-
-  <div class="text-block">
-
-    <div class="work-info">
-      <p class="artist"><a href="#">your name</a></p>
-      <p class="title"><em>work title, 2025</em></p>
-      <p class="meta">
-        digital / print<br>
-        size info
-      </p>
-      <p class="link">
-        available on <a href="#">link</a>
-      </p>
-    </div>
-  </div>
-  
-  <div class="visual">
-    <img src="images/Design_01.jpg">
-  </div>
-
-  <div class="text-block">
-
-    <div class="work-info">
-      <p class="artist"><a href="#">your name</a></p>
-      <p class="title"><em>work title, 2025</em></p>
-      <p class="meta">
-        digital / print<br>
-        size info
-      </p>
-      <p class="link">
-        available on <a href="#">link</a>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Photograph -->
-<section class="section" id="photograph">
-  <div class="visual">
-    <img src="images/Photograph_01.jpg">
-  </div>
-
-  <div class="text-block">
-
-    <div class="work-info">
-      <p class="artist"><a href="#">your name</a></p>
-      <p class="title"><em>photo title, 2025</em></p>
-      <p class="meta">
-        camera / location
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Art -->
-<section class="section" id="art">
-  <div class="visual">
-    <img src="images/Art_01.jpg">
-  </div>
-
-  <div class="text-block">
-
-    <div class="work-info">
-      <p class="artist"><a href="#">your name</a></p>
-      <p class="title"><em>art title, 2025</em></p>
-      <p class="meta">
-        oil on canvas<br>
-        size info
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- GoodNews -->
-<section class="section" id="goodnews">
-  <div class="news-item">
-    <p class="date">2024.04</p>
-    <div>
-      <p class="news-title">ニュースタイトル</p>
-      <p class="news-desc">説明文</p>
-    </div>
-  </div>
-</section>
-
 </main>
 
 <!-- ホバー画像 -->
 <div class="hover-preview">
   <img src="">
+</div>
+
+<!-- モーダル -->
+<div class="modal">
+  <div class="modal-content">
+    <p class="modal-text"></p>
+  </div>
 </div>
 
 <script>
@@ -313,16 +321,19 @@ const sections = document.querySelectorAll('.section');
 const preview = document.querySelector('.hover-preview');
 const previewImg = preview.querySelector('img');
 
+const modal = document.querySelector('.modal');
+const modalText = document.querySelector('.modal-text');
+
 const hoverImages = {
-  design: 'images/Design_thumb_01.jpg',
-  photograph: 'images/Photograph_thumb_01.jpg',
-  art: 'images/Art_thumb_01.jpg'
+  design: 'images/Design_01.jpg',
+  photograph: 'images/Photograph_01.jpg',
+  art: 'images/Art_01.jpg'
 };
 
+// ナビ操作
 links.forEach(link => {
   const key = link.dataset.section;
 
-  // クリック切り替え
   link.addEventListener('click', e => {
     e.preventDefault();
 
@@ -333,7 +344,7 @@ links.forEach(link => {
     document.getElementById(key).classList.add('active');
   });
 
-  // ホバー画像
+  // ホバー画像（即表示・即消え）
   if (hoverImages[key]) {
     link.addEventListener('mouseenter', () => {
       previewImg.src = hoverImages[key];
@@ -344,6 +355,18 @@ links.forEach(link => {
       preview.style.opacity = 0;
     });
   }
+});
+
+// モーダル
+document.querySelectorAll('.title').forEach(title => {
+  title.addEventListener('click', () => {
+    modalText.textContent = title.dataset.caption;
+    modal.classList.add('active');
+  });
+});
+
+modal.addEventListener('click', () => {
+  modal.classList.remove('active');
 });
 </script>
 
