@@ -53,15 +53,32 @@
       line-height: 1.9;
       letter-spacing: 0.02em;
     }
+
+    .image-area {
+      max-width: 580px;
+      margin-top: 32px;
+      min-height: 320px;
+    }
+
+    .preview-image {
+      display: none;
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .preview-image.active {
+      display: block;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <nav>
-      <a href="#">Design</a>
-      <a href="#">Photograph</a>
-      <a href="#">Art</a>
-      <a href="#">GoodNews</a>
+      <a href="#" data-target="design">Design</a>
+      <a href="#" data-target="photograph">Photograph</a>
+      <a href="#" data-target="art">Art</a>
+      <a href="#" data-target="goodnews">GoodNews</a>
     </nav>
     <div class="info">
       <p>Graphic Designer, Photographer</p>
@@ -69,5 +86,30 @@
       <p>IG: @onoodai</p>
     </div>
   </div>
+
+  <div class="image-area">
+    <img class="preview-image" id="design" src="images/design.jpg" alt="Design">
+    <img class="preview-image" id="photograph" src="images/photograph.jpg" alt="Photograph">
+    <img class="preview-image" id="art" src="images/art.jpg" alt="Art">
+    <img class="preview-image" id="goodnews" src="images/goodnews.jpg" alt="GoodNews">
+  </div>
+
+  <script>
+    const links = document.querySelectorAll('nav a[data-target]');
+    const images = document.querySelectorAll('.preview-image');
+
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        const target = link.dataset.target;
+        images.forEach(img => {
+          img.classList.toggle('active', img.id === target);
+        });
+      });
+
+      link.addEventListener('mouseleave', () => {
+        images.forEach(img => img.classList.remove('active'));
+      });
+    });
+  </script>
 </body>
 </html>
