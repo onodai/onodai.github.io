@@ -17,7 +17,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 }
 
-/* ===== ナビ（D P A G C） ===== */
+/* ===== ナビ ===== */
 .top-nav {
   padding: 32px 48px;
   display: flex;
@@ -49,14 +49,17 @@ main {
   display: block;
 }
 
+/* ===== 作品ブロック ===== */
+.work {
+  margin-bottom: 100px;
+}
+
 /* ===== 画像 ===== */
 .visual {
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 .visual img {
-  width: auto;
-  height: auto;
   max-width: 100%;
   display: block;
 }
@@ -66,12 +69,6 @@ main {
   display: flex;
   flex-direction: column;
   gap: 6px;
-}
-
-.artist a {
-  font-size: 14px;
-  color: #2a5bd7;
-  text-decoration: underline;
 }
 
 .title {
@@ -86,13 +83,12 @@ main {
 .meta {
   font-size: 13px;
   color: #555;
-  line-height: 1.8;
 }
 
-  .contact-info {
+/* ===== Contact ===== */
+.contact-info {
   font-size: 14px;
   line-height: 2;
-  color: #555;
   margin-top: 40px;
 }
 
@@ -142,11 +138,9 @@ main {
   background: #fff;
   padding: 32px;
   max-width: 480px;
-  font-size: 14px;
-  line-height: 1.8;
 }
 
-/* ===== ぼけ演出 ===== */
+/* ===== ぼけ ===== */
 .blur-layer {
   position: fixed;
   top: 0;
@@ -161,60 +155,33 @@ main {
 .blur-layer span {
   position: absolute;
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   opacity: 0;
-
-/* ★ここがコア */
   mask-image: radial-gradient(circle, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);
-  -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);
 }
-  
-/* 雲アニメ */
+
+/* アニメ */
 @keyframes floatBlur {
-  0% {
-    transform: translateX(-20vw);
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(120vw);
-    opacity: 0;
-  }
+  0% { transform: translateX(-20vw); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateX(120vw); opacity: 0; }
 }
 
 .blur-layer span:nth-child(1) {
-  width: 180px;
-  height: 180px;
-  top: 20%;
+  width: 180px; height: 180px; top: 20%;
   animation: floatBlur 25s linear infinite;
 }
 
 .blur-layer span:nth-child(2) {
-  width: 240px;
-  height: 240px;
-  top: 60%;
+  width: 240px; height: 240px; top: 60%;
   animation: floatBlur 35s linear infinite;
   animation-delay: 5s;
 }
 
 .blur-layer span:nth-child(3) {
-  width: 140px;
-  height: 140px;
-  top: 40%;
+  width: 140px; height: 140px; top: 40%;
   animation: floatBlur 30s linear infinite;
   animation-delay: 10s;
-}
-
-/* ===== スマホ ===== */
-@media (max-width: 768px) {
-  .top-nav {
-    font-size: 22px;
-  }
 }
 </style>
 </head>
@@ -234,79 +201,82 @@ main {
 
 <!-- Design -->
 <section class="section active" id="design">
-  <div class="visual">
-    <img src="images/Design/D_1-1.jpg">
+
+  <div class="work">
+    <div class="visual">
+      <img src="images/Design/D_1-1.jpg">
+    </div>
+    <div class="work-info">
+      <p class="title" data-caption="作品説明1"><em>work 1, 2025</em></p>
+      <p class="meta">digital</p>
+    </div>
   </div>
 
-  <div class="work-info">
-    <p class="title" data-caption="作品説明">
-      <em>work title, 2025</em>
-    </p>
-    <p class="meta">digital / print</p>
+  <div class="work">
+    <div class="visual">
+      <img src="images/Design/D_2-1.jpg">
+    </div>
+    <div class="work-info">
+      <p class="title" data-caption="作品説明2"><em>work 2, 2025</em></p>
+      <p class="meta">poster</p>
+    </div>
   </div>
+
 </section>
 
 <!-- Photograph -->
 <section class="section" id="photograph">
-  <div class="visual">
-    <img src="images/Photograph/P_1-1.jpg">
+
+  <div class="work">
+    <div class="visual">
+      <img src="images/Photograph/P_1-1.jpg">
+    </div>
+    <div class="work-info">
+      <p class="title" data-caption="写真説明"><em>photo 1</em></p>
+      <p class="meta">camera</p>
+    </div>
   </div>
 
-  <div class="work-info">
-    <p class="title" data-caption="写真説明">
-      <em>photo title, 2025</em>
-    </p>
-    <p class="meta">camera / location</p>
-  </div>
 </section>
 
 <!-- Art -->
 <section class="section" id="art">
-  <div class="visual">
-    <img src="images/Art/A_1-1.jpg">
+
+  <div class="work">
+    <div class="visual">
+      <img src="images/Art/A_1-1.jpg">
+    </div>
+    <div class="work-info">
+      <p class="title" data-caption="アート説明"><em>art 1</em></p>
+      <p class="meta">oil</p>
+    </div>
   </div>
 
-  <div class="work-info">
-    <p class="artist"><a href="#">your name</a></p>
-    <p class="title" data-caption="アート説明">
-      <em>art title, 2025</em>
-    </p>
-    <p class="meta">oil on canvas</p>
-  </div>
 </section>
 
-  <section class="section" id="contact">
+<!-- Contact -->
+<section class="section" id="contact">
   <div class="contact-info">
     <p>Graphic Designer, Photographer</p>
-    <p>Mail: ono.dai@icloud.com　TEL: 080-6357-8554</p>
+    <p>Mail: dai@onokobo.com　TEL: 080-6357-8554</p>
     <p>
-      IG: 
-      <a href="https://www.instagram.com/onoodai/" target="_blank" rel="noopener noreferrer">
-        @onoodai
-      </a>
+      IG: <a href="https://www.instagram.com/onoodai/" target="_blank">@onoodai</a>
     </p>
   </div>
 </section>
 
 </main>
 
-<!-- ホバー画像 -->
-<div class="hover-preview">
-  <img src="">
-</div>
+<div class="hover-preview"><img src=""></div>
 
-<!-- モーダル -->
 <div class="modal">
   <div class="modal-content">
     <p class="modal-text"></p>
   </div>
 </div>
 
-<!-- ぼけ -->
 <div class="blur-layer">
-  <span></span>
-  <span></span>
-  <span></span>
+  <span></span><span></span><span></span>
 </div>
 
 <script>
@@ -314,7 +284,6 @@ const navItems = document.querySelectorAll('.top-nav span');
 const sections = document.querySelectorAll('.section');
 const preview = document.querySelector('.hover-preview');
 const previewImg = preview.querySelector('img');
-
 const modal = document.querySelector('.modal');
 const modalText = document.querySelector('.modal-text');
 
@@ -324,7 +293,6 @@ const hoverImages = {
   art: 'images/Art_thumb_01.jpg'
 };
 
-// ナビ
 navItems.forEach(item => {
   const key = item.dataset.section;
 
@@ -333,11 +301,9 @@ navItems.forEach(item => {
     sections.forEach(s => s.classList.remove('active'));
 
     item.classList.add('active');
-    const target = document.getElementById(key);
-    if (target) target.classList.add('active');
+    document.getElementById(key)?.classList.add('active');
   });
 
-  // ホバー画像
   if (hoverImages[key]) {
     item.addEventListener('mouseenter', () => {
       previewImg.src = hoverImages[key];
@@ -350,7 +316,6 @@ navItems.forEach(item => {
   }
 });
 
-// モーダル
 document.querySelectorAll('.title').forEach(title => {
   title.addEventListener('click', () => {
     modalText.textContent = title.dataset.caption;
