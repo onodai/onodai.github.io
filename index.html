@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio</title>
+
   <style>
     * {
       box-sizing: border-box;
@@ -16,7 +17,7 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
     }
 
-    /* ヘッダー */
+    /* ===== ヘッダー ===== */
     header {
       padding: 32px 32px 0;
       position: sticky;
@@ -43,7 +44,6 @@
       font-size: 14px;
       color: #666;
       text-decoration: none;
-      letter-spacing: 0.02em;
       cursor: pointer;
       transition: color 0.2s;
     }
@@ -61,10 +61,9 @@
       font-size: 13px;
       color: #666;
       line-height: 1.9;
-      letter-spacing: 0.02em;
     }
 
-    /* メイン */
+    /* ===== メイン ===== */
     main {
       padding: 64px 48px;
       max-width: 900px;
@@ -78,7 +77,7 @@
       display: block;
     }
 
-    /* ビジュアル */
+    /* ===== ビジュアル ===== */
     .visual {
       width: 100%;
       aspect-ratio: 16 / 9;
@@ -93,62 +92,49 @@
       object-fit: cover;
     }
 
-    /* テキスト */
+    /* ===== 作品インフォ ===== */
     .text-block {
       display: grid;
       grid-template-columns: 200px 1fr;
       gap: 48px;
     }
 
-    .label {
-      font-size: 12px;
-      color: #aaa;
-      letter-spacing: 0.08em;
-      padding-top: 4px;
-    }
+    /* ← label削除済み */
 
-    /* ===== ここから作品インフォ ===== */
     .work-info {
       display: flex;
       flex-direction: column;
       gap: 6px;
     }
 
-    .work-info .artist a {
+    .artist a {
       font-size: 14px;
       color: #2a5bd7;
       text-decoration: underline;
     }
 
-    .work-info .title {
+    .title {
       font-size: 18px;
       color: #222;
-      margin-bottom: 4px;
     }
 
-    .work-info .meta {
+    .meta {
       font-size: 13px;
       color: #555;
       line-height: 1.8;
     }
 
-    .work-info .link {
+    .link {
       font-size: 13px;
       margin-top: 8px;
     }
 
-    .work-info .link a {
+    .link a {
       color: #2a5bd7;
       text-decoration: underline;
     }
-    /* ===== ここまで ===== */
 
-    /* GoodNews */
-    .news-list {
-      display: flex;
-      flex-direction: column;
-    }
-
+    /* ===== GoodNews ===== */
     .news-item {
       display: grid;
       grid-template-columns: 200px 1fr;
@@ -172,13 +158,34 @@
       color: #888;
     }
 
-    /* スマホ対応（軽め） */
+    /* ===== ホバー画像 ===== */
+    .hover-preview {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 380px;
+      aspect-ratio: 4 / 3;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 50;
+    }
+
+    .hover-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ===== スマホ ===== */
     @media (max-width: 768px) {
       .text-block,
       .news-item {
         grid-template-columns: 1fr;
       }
     }
+
   </style>
 </head>
 
@@ -192,9 +199,10 @@
       <a href="#" data-section="art">Art</a>
       <a href="#" data-section="goodnews">GoodNews</a>
     </nav>
+
     <div class="header-info">
       <p>Graphic Designer, Photographer</p>
-      <p>Mail: dai@onokobo.com　TEL: 080-6357-8554</p>
+      <p>Mail: dai@onokobo.com</p>
       <p>IG: @onoodai</p>
     </div>
   </div>
@@ -209,14 +217,14 @@
   </div>
 
   <div class="text-block">
-    <p class="label">Design</p>
+    <div></div>
 
     <div class="work-info">
       <p class="artist"><a href="#">your name</a></p>
       <p class="title"><em>work title, 2025</em></p>
       <p class="meta">
         digital / print<br>
-        size info here
+        size info
       </p>
       <p class="link">
         available on <a href="#">link</a>
@@ -232,13 +240,13 @@
   </div>
 
   <div class="text-block">
-    <p class="label">Photograph</p>
+    <div></div>
 
     <div class="work-info">
       <p class="artist"><a href="#">your name</a></p>
       <p class="title"><em>photo title, 2025</em></p>
       <p class="meta">
-        camera info / location
+        camera / location
       </p>
     </div>
   </div>
@@ -251,7 +259,7 @@
   </div>
 
   <div class="text-block">
-    <p class="label">Art</p>
+    <div></div>
 
     <div class="work-info">
       <p class="artist"><a href="#">your name</a></p>
@@ -266,34 +274,60 @@
 
 <!-- GoodNews -->
 <section class="section" id="goodnews">
-  <div class="news-list">
-    <div class="news-item">
-      <p class="date">2024.04</p>
-      <div>
-        <p class="news-title">ニュースタイトル</p>
-        <p class="news-desc">説明</p>
-      </div>
+  <div class="news-item">
+    <p class="date">2024.04</p>
+    <div>
+      <p class="news-title">ニュースタイトル</p>
+      <p class="news-desc">説明文</p>
     </div>
   </div>
 </section>
 
 </main>
 
+<!-- ホバー画像 -->
+<div class="hover-preview">
+  <img src="">
+</div>
+
 <script>
 const links = document.querySelectorAll('nav a');
 const sections = document.querySelectorAll('.section');
 
+const preview = document.querySelector('.hover-preview');
+const previewImg = preview.querySelector('img');
+
+const hoverImages = {
+  design: 'images/Design_01.jpg',
+  photograph: 'images/Photograph_01.jpg',
+  art: 'images/Art_01.jpg'
+};
+
 links.forEach(link => {
+  const key = link.dataset.section;
+
+  // クリック切り替え
   link.addEventListener('click', e => {
     e.preventDefault();
-    const target = link.dataset.section;
 
     links.forEach(l => l.classList.remove('active'));
     sections.forEach(s => s.classList.remove('active'));
 
     link.classList.add('active');
-    document.getElementById(target).classList.add('active');
+    document.getElementById(key).classList.add('active');
   });
+
+  // ホバー画像
+  if (hoverImages[key]) {
+    link.addEventListener('mouseenter', () => {
+      previewImg.src = hoverImages[key];
+      preview.style.opacity = 1;
+    });
+
+    link.addEventListener('mouseleave', () => {
+      preview.style.opacity = 0;
+    });
+  }
 });
 </script>
 
