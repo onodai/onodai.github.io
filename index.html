@@ -15,9 +15,10 @@
 
 body {
   background-color: #fafff8;
-font-family: 'Zen Kaku Gothic New', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-family: 'Zen Kaku Gothic New', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
-  
+
 /* ===== ナビ ===== */
 .top-nav {
   padding: 32px 48px;
@@ -27,15 +28,6 @@ font-family: 'Zen Kaku Gothic New', -apple-system, BlinkMacSystemFont, 'Helvetic
   letter-spacing: 0.1em;
 }
 
-@media (max-width: 768px) {
-
-  .top-nav {
-    padding: 16px 16px;
-    gap: 12px;
-    font-size: 20px;
-    letter-spacing: 0.1em;
-}
-  
 .top-nav span {
   cursor: pointer;
   color: #888;
@@ -50,11 +42,6 @@ main {
   padding: 32px 48px 64px;
   max-width: 900px;
 }
-  @media (max-width: 768px) {
-  main {
-    padding: 24px 16px 48px;
-  }
-}
 
 .section {
   display: none;
@@ -64,14 +51,13 @@ main {
   display: block;
 }
 
-/* ===== 作品ブロック ===== */
+/* ===== 作品 ===== */
 .work {
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 }
 
-/* ===== 画像 ===== */
 .visual {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .visual img {
@@ -79,7 +65,6 @@ main {
   display: block;
 }
 
-/* ===== 作品情報 ===== */
 .work-info {
   display: flex;
   flex-direction: column;
@@ -87,7 +72,8 @@ main {
 }
 
 .title {
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 500;
   cursor: pointer;
 }
 
@@ -96,7 +82,7 @@ main {
 }
 
 .meta {
-  font-size: 13px;
+  font-size: 12px;
   color: #555;
 }
 
@@ -123,12 +109,7 @@ main {
   opacity: 0;
   z-index: 50;
 }
-@media (max-width: 768px) {
-  .hover-preview {
-    display: none;
-  }
-}
-  
+
 .hover-preview img {
   width: 100%;
 }
@@ -174,7 +155,7 @@ main {
 
 .blur-layer span {
   position: absolute;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
   opacity: 0;
   mask-image: radial-gradient(circle, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);
 }
@@ -203,12 +184,36 @@ main {
   animation: floatBlur 30s linear infinite;
   animation-delay: 10s;
 }
+
+/* ===== スマホ ===== */
+@media (max-width: 768px) {
+
+  .top-nav {
+    padding: 16px;
+    font-size: 20px;
+    justify-content: space-between;
+  }
+
+  .top-nav span {
+    flex: 1;
+    text-align: center;
+    padding: 8px 0;
+  }
+
+  main {
+    padding: 24px 16px 48px;
+  }
+
+  .hover-preview {
+    display: none;
+  }
+
+}
 </style>
 </head>
 
 <body>
 
-<!-- ナビ -->
 <div class="top-nav">
   <span data-section="design" class="active">D</span>
   <span data-section="photograph">P</span>
@@ -219,118 +224,21 @@ main {
 
 <main>
 
-<!-- Design -->
 <section class="section active" id="design">
 
+  <!-- 作品例 -->
   <div class="work">
     <div class="visual">
       <img src="images/Design/D_1-1.jpg">
     </div>
     <div class="work-info">
-      <p class="title" data-caption="横浜のアートスペースArt Center NEW が行う連続講座。横浜の街を舞台にしたワークショップで非アーティストに開かれた講座になっている。企画を聞いて実際に自身も街を歩きながら地面をフロッタージュしたものをビジュアルに使用した。また「地図」という言葉をキーワードとしてアイソメ図を想起させるデザインをほどこした。">
-        5つの都市の断面図, 2026</p>
+      <p class="title" data-caption="説明">5つの都市の断面図, 2026</p>
       <p class="meta">flyer</p>
     </div>
   </div>
 
-  <div class="work">
-    <div class="visual">
-      <img src="images/Design/D_2-1.jpg">
-    </div>
-    <div class="work-info">
-      <p class="title" data-caption="Art Center NEWで行われた音楽ライブ、パフォーマンス、イベント、映像上映といった異なる形態の表現を連続的・集中的に行うイベント。夏らしくシンプルで爽やかなものを目指した。タイトルの作字はAokidさん。">
-        NEW FES, 2025</p>
-      <p class="meta">poster</p>
-    </div>
-  </div>
-
-    <div class="work">
-    <div class="visual">
-      <img src="images/Design/D_3-1.jpg">
-    </div>
-    <div class="work-info">
-      <p class="title" data-caption="福岡県久留米市のオルタナティブスペース余韻にて開催された写真展示「ハイビーム」のキービジュアルを制作。車のハイビームや、 見ることと見られるという事の双方向性と言った部分を手がかりに上下左右の反転が可能なトランプ的な図案のイメージをビジュアルに組み込んだ。">
-        ハイビーム, 2025</p>
-      <p class="meta">poster</p>
-    </div>
-  </div>
-
-   <div class="work">
-    <div class="visual">
-      <img src="images/Design/D_4-1.jpg">
-    </div>
-    <div class="work-info">
-      <p class="title" data-caption="2024年のフィルムフェストアキヅキに出品された映画「やわらかい犬」のキービジュアルを制作。現場にも参加した。">
-        やわらかい犬, 2024</p>
-      <p class="meta">poster</p>
-    </div>
-  </div>
-
-   <div class="work">
-    <div class="visual">
-      <img src="images/Design/D_5-1.jpg">
-    </div>
-    <div class="work-info">
-      <p class="title" data-caption="TokyoArtBookFair2024のNITESHAブースにて販売された写真文芸誌「FlowerPark」のデザインを担当。全てを一冊一冊手製本で仕上げた。">
-        Flower Park, 2024</p>
-      <p class="meta">poster</p>
-    </div>
-  </div>
-
-   <div class="work">
-    <div class="visual">
-      <img src="images/Design/D_6-1.jpg">
-    </div>
-    <div class="work-info">
-      <p class="title" data-caption="21_21 DESIGN SIGHTで開催中された企画展『ゴミうんち展』に出展している作品の音記録アルバム「pooploop」のデザインを制作。">
-        pooploop, 2024</p>
-      <p class="meta">poster</p>
-    </div>
-  </div>
-  
-  <div class="work">
-    <div class="visual">
-      <img src="images/Design/D_7-1.jpg">
-    </div>
-    <div class="work-info">
-      <p class="title" data-caption="WWWで行われた蓮沼執太氏のソロ公演「S C P」のデザイン全般を担当。S C Pとは[Sing][Club][Piano]の略称で蓮沼氏のそれぞれの音楽性を堪能できる公演。KVからフライヤー、グッズ、ステッカー、SNS用の動画など一貫してデザインを担当させていただき多くの学びを得た。">
-        S C P, 2024</p>
-      <p class="meta">poster</p>
-    </div>
-  </div>
 </section>
 
-<!-- Photograph -->
-<section class="section" id="photograph">
-
-  <div class="work">
-    <div class="visual">
-      <img src="images/Photograph/P_1-1.jpg">
-    </div>
-    <div class="work-info">
-      <p class="title" data-caption="写真説明"><em>photo 1</em></p>
-      <p class="meta">camera</p>
-    </div>
-  </div>
-
-</section>
-
-<!-- Art -->
-<section class="section" id="art">
-
-  <div class="work">
-    <div class="visual">
-      <img src="images/Art/A_1-1.jpg">
-    </div>
-    <div class="work-info">
-      <p class="title" data-caption="アート説明"><em>art 1</em></p>
-      <p class="meta">oil</p>
-    </div>
-  </div>
-
-</section>
-
-<!-- Contact -->
 <section class="section" id="contact">
   <div class="contact-info">
     <p>Graphic Designer, Photographer</p>
@@ -369,6 +277,7 @@ const hoverImages = {
   art: 'images/Art_thumb_01.jpg'
 };
 
+// ナビ切替
 navItems.forEach(item => {
   const key = item.dataset.section;
 
@@ -379,14 +288,10 @@ navItems.forEach(item => {
     item.classList.add('active');
     document.getElementById(key)?.classList.add('active');
   });
+});
 
-  if (hoverImages[key]) {
-    item.addEventListener('mouseenter', () => {
-      previewImg.src = hoverImages[key];
-      preview.style.opacity = 1;
-    });
-    
-    if (window.innerWidth > 768) {
+// ホバー（PCのみ）
+if (window.innerWidth > 768) {
   navItems.forEach(item => {
     const key = item.dataset.section;
 
@@ -403,12 +308,7 @@ navItems.forEach(item => {
   });
 }
 
-    item.addEventListener('mouseleave', () => {
-      preview.style.opacity = 0;
-    });
-  }
-});
-
+// モーダル
 document.querySelectorAll('.title').forEach(title => {
   title.addEventListener('click', () => {
     modalText.textContent = title.dataset.caption;
