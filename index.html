@@ -78,52 +78,72 @@
       display: block;
     }
 
-    /* 大ビジュアル */
+    /* ビジュアル */
     .visual {
       width: 100%;
       aspect-ratio: 16 / 9;
       background-color: #dce8d8;
       overflow: hidden;
-      margin-bottom: 40px;
+      margin-bottom: 32px;
     }
 
     .visual img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
     }
 
-    /* テキストブロック */
+    /* テキスト */
     .text-block {
       display: grid;
       grid-template-columns: 200px 1fr;
       gap: 48px;
     }
 
-    .text-block .label {
+    .label {
       font-size: 12px;
       color: #aaa;
       letter-spacing: 0.08em;
       padding-top: 4px;
     }
 
-    .text-block .body {
+    /* ===== ここから作品インフォ ===== */
+    .work-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .work-info .artist a {
       font-size: 14px;
+      color: #2a5bd7;
+      text-decoration: underline;
+    }
+
+    .work-info .title {
+      font-size: 18px;
+      color: #222;
+      margin-bottom: 4px;
+    }
+
+    .work-info .meta {
+      font-size: 13px;
       color: #555;
-      line-height: 2;
-      letter-spacing: 0.03em;
+      line-height: 1.8;
     }
 
-    .text-block .body h2 {
-      font-size: 15px;
-      font-weight: 500;
-      color: #444;
-      margin-bottom: 12px;
-      letter-spacing: 0.04em;
+    .work-info .link {
+      font-size: 13px;
+      margin-top: 8px;
     }
 
-    /* GoodNews テキストリスト */
+    .work-info .link a {
+      color: #2a5bd7;
+      text-decoration: underline;
+    }
+    /* ===== ここまで ===== */
+
+    /* GoodNews */
     .news-list {
       display: flex;
       flex-direction: column;
@@ -137,36 +157,37 @@
       border-top: 0.5px solid #d0dcc8;
     }
 
-    .news-item .date {
+    .date {
       font-size: 12px;
       color: #aaa;
-      letter-spacing: 0.05em;
-      padding-top: 2px;
     }
 
-    .news-item .news-body {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.8;
-    }
-
-    .news-item .news-title {
+    .news-title {
       font-weight: 500;
       margin-bottom: 6px;
     }
 
-    .news-item .news-desc {
+    .news-desc {
       font-size: 13px;
       color: #888;
     }
+
+    /* スマホ対応（軽め） */
+    @media (max-width: 768px) {
+      .text-block,
+      .news-item {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <div class="header-inner">
+<header>
+  <div class="header-inner">
     <nav>
-      <a href="#" data-section="design">Design</a>
+      <a href="#" data-section="design" class="active">Design</a>
       <a href="#" data-section="photograph">Photograph</a>
       <a href="#" data-section="art">Art</a>
       <a href="#" data-section="goodnews">GoodNews</a>
@@ -176,99 +197,105 @@
       <p>Mail: dai@onokobo.com　TEL: 080-6357-8554</p>
       <p>IG: @onoodai</p>
     </div>
+  </div>
+</header>
+
+<main>
+
+<!-- Design -->
+<section class="section active" id="design">
+  <div class="visual">
+    <img src="images/Design_01.jpg">
+  </div>
+
+  <div class="text-block">
+    <p class="label">Design</p>
+
+    <div class="work-info">
+      <p class="artist"><a href="#">your name</a></p>
+      <p class="title"><em>work title, 2025</em></p>
+      <p class="meta">
+        digital / print<br>
+        size info here
+      </p>
+      <p class="link">
+        available on <a href="#">link</a>
+      </p>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main>
+<!-- Photograph -->
+<section class="section" id="photograph">
+  <div class="visual">
+    <img src="images/Photograph_01.jpg">
+  </div>
 
-    <!-- Design -->
-    <section class="section" id="design">
-      <div class="visual">
-        <img src="images/Design_01.jpg" alt="Design">
+  <div class="text-block">
+    <p class="label">Photograph</p>
+
+    <div class="work-info">
+      <p class="artist"><a href="#">your name</a></p>
+      <p class="title"><em>photo title, 2025</em></p>
+      <p class="meta">
+        camera info / location
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Art -->
+<section class="section" id="art">
+  <div class="visual">
+    <img src="images/Art_01.jpg">
+  </div>
+
+  <div class="text-block">
+    <p class="label">Art</p>
+
+    <div class="work-info">
+      <p class="artist"><a href="#">your name</a></p>
+      <p class="title"><em>art title, 2025</em></p>
+      <p class="meta">
+        oil on canvas<br>
+        size info
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- GoodNews -->
+<section class="section" id="goodnews">
+  <div class="news-list">
+    <div class="news-item">
+      <p class="date">2024.04</p>
+      <div>
+        <p class="news-title">ニュースタイトル</p>
+        <p class="news-desc">説明</p>
       </div>
-      <div class="text-block">
-        <p class="label">Design</p>
-        <div class="body">
-          <h2>作品タイトルをここに入力</h2>
-          <p>デザインの説明文をここに入力してください。素材、コンセプト、制作背景などを自由に記述できます。複数行にわたるテキストにも対応しています。</p>
-        </div>
-      </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- Photograph -->
-    <section class="section" id="photograph">
-      <div class="visual">
-        <img src="images/Photograph_01.jpg" alt="Photograph">
-      </div>
-      <div class="text-block">
-        <p class="label">Photograph</p>
-        <div class="body">
-          <h2>作品タイトルをここに入力</h2>
-          <p>写真の説明文をここに入力してください。撮影場所、機材、コンセプトなどを自由に記述できます。</p>
-        </div>
-      </div>
-    </section>
+</main>
 
-    <!-- Art -->
-    <section class="section" id="art">
-      <div class="visual">
-        <img src="images/Art_01.jpg" alt="Art">
-      </div>
-      <div class="text-block">
-        <p class="label">Art</p>
-        <div class="body">
-          <h2>作品タイトルをここに入力</h2>
-          <p>アート作品の説明文をここに入力してください。素材、手法、コンセプトなどを自由に記述できます。</p>
-        </div>
-      </div>
-    </section>
+<script>
+const links = document.querySelectorAll('nav a');
+const sections = document.querySelectorAll('.section');
 
-    <!-- GoodNews -->
-    <section class="section" id="goodnews">
-      <div class="news-list">
-        <div class="news-item">
-          <p class="date">2024.04</p>
-          <div class="news-body">
-            <p class="news-title">ニュースタイトルをここに入力</p>
-            <p class="news-desc">ニュースの詳細説明をここに入力してください。展示情報、受賞歴、メディア掲載などを記述できます。</p>
-          </div>
-        </div>
-        <div class="news-item">
-          <p class="date">2024.03</p>
-          <div class="news-body">
-            <p class="news-title">ニュースタイトルをここに入力</p>
-            <p class="news-desc">ニュースの詳細説明をここに入力してください。</p>
-          </div>
-        </div>
-        <div class="news-item">
-          <p class="date">2024.02</p>
-          <div class="news-body">
-            <p class="news-title">ニュースタイトルをここに入力</p>
-            <p class="news-desc">ニュースの詳細説明をここに入力してください。</p>
-          </div>
-        </div>
-      </div>
-    </section>
+links.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = link.dataset.section;
 
-  </main>
+    links.forEach(l => l.classList.remove('active'));
+    sections.forEach(s => s.classList.remove('active'));
 
-  <script>
-    const links = document.querySelectorAll('nav a[data-section]');
-    const sections = document.querySelectorAll('.section');
-
-    links.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const target = link.dataset.section;
-
-        links.forEach(l => l.classList.remove('active'));
-        sections.forEach(s => s.classList.remove('active'));
-
-        link.classList.add('active');
-        document.getElementById(target).classList.add('active');
-      });
-    });
-  </script>
+    link.classList.add('active');
+    document.getElementById(target).classList.add('active');
+  });
+});
+</script>
 
 </body>
 </html>
