@@ -141,6 +141,14 @@ main {
   max-width: 480px;
 }
 
+  .modal-link {
+  display: block;
+  margin-top: 16px;
+  font-size: 14px;
+  color: #2a5bd7;
+  text-decoration: underline;
+}
+
 /* ===== ぼけ ===== */
 .blur-layer {
   position: fixed;
@@ -368,6 +376,10 @@ main {
         <em>walk between</em></p>
       <p class="meta">video</p>
     </div>
+    <div class="modal-content">
+  <p class="modal-text"></p>
+  <a class="modal-link" href="#" target="_blank"></a>
+　　</div>
   </div>
 
   <div class="work">
@@ -501,15 +513,24 @@ navItems.forEach(item => {
 });
 
 // ===== モーダル =====
+const modalLink = document.querySelector('.modal-link');
+
 document.querySelectorAll('.title').forEach(title => {
   title.addEventListener('click', () => {
     modalText.textContent = title.dataset.caption;
+
+    const link = title.dataset.link;
+
+    if (link) {
+      modalLink.href = link;
+      modalLink.textContent = 'View more';
+      modalLink.style.display = 'inline-block';
+    } else {
+      modalLink.style.display = 'none';
+    }
+
     modal.classList.add('active');
   });
-});
-
-modal.addEventListener('click', () => {
-  modal.classList.remove('active');
 });
 </script>
 
