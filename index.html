@@ -120,7 +120,7 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  background: transparent;
+  background: #ffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -507,9 +507,9 @@ const transitionImg = transition.querySelector('img');
 navItems.forEach(item => {
   const key = item.dataset.section;
 
+  // ===== クリック（スマホ演出）=====
   item.addEventListener('click', () => {
 
-    // スマホ時だけ演出
     if (window.innerWidth <= 768 && hoverImages[key]) {
 
       transitionImg.src = hoverImages[key];
@@ -518,7 +518,6 @@ navItems.forEach(item => {
       setTimeout(() => {
         transition.classList.remove('active');
 
-        // ページ切り替え
         navItems.forEach(i => i.classList.remove('active'));
         sections.forEach(s => s.classList.remove('active'));
 
@@ -529,7 +528,6 @@ navItems.forEach(item => {
 
     } else {
 
-      // PC通常動作
       navItems.forEach(i => i.classList.remove('active'));
       sections.forEach(s => s.classList.remove('active'));
 
@@ -537,8 +535,26 @@ navItems.forEach(item => {
       document.getElementById(key)?.classList.add('active');
     }
   });
-});
 
+  // ===== ホバー（PC専用）=====
+  if (hoverImages[key]) {
+
+    item.addEventListener('mouseenter', () => {
+      if (window.innerWidth > 768) {
+        previewImg.src = hoverImages[key];
+        preview.style.opacity = 1;
+      }
+    });
+
+    item.addEventListener('mouseleave', () => {
+      if (window.innerWidth > 768) {
+        preview.style.opacity = 0;
+      }
+    });
+
+  }
+});
+  
 // モーダル
 document.querySelectorAll('.title').forEach(title => {
   title.addEventListener('click', () => {
