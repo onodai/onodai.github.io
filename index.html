@@ -267,7 +267,7 @@ main {
    <div class="work">
     <div class="visual">
       <img src="images/design/d_4-1.jpg">
-    </div>
+    </div> 
     <div class="work-info">
       <p class="title" data-caption="2024年のフィルムフェストアキヅキに出品された映画「やわらかい犬」のキービジュアルを制作。現場にも参加した。">
         やわらかい犬, 2024</p>
@@ -278,7 +278,7 @@ main {
    <div class="work">
     <div class="visual">
       <img src="images/design/d_5-1.jpg">
-
+  　 </div>
     <div class="work-info">
       <p class="title" data-caption="TokyoArtBookFair2024のNITESHAブースにて販売された写真文芸誌「FlowerPark」のデザインを担当。全てを一冊一冊手製本で仕上げた。">
         Flower Park, 2024</p>
@@ -468,14 +468,11 @@ const hoverImages = {
   contact: 'images/c_top.png',
 };
 
-// ナビ切替
-const transition = document.querySelector('.mobile-transition');
-const transitionImg = transition.querySelector('img');
-  
+// ===== ナビ切替 =====
 navItems.forEach(item => {
   const key = item.dataset.section;
 
-  // ===== クリック（共通）=====
+  // クリック
   item.addEventListener('click', () => {
     navItems.forEach(i => i.classList.remove('active'));
     sections.forEach(s => s.classList.remove('active'));
@@ -484,9 +481,8 @@ navItems.forEach(item => {
     document.getElementById(key)?.classList.add('active');
   });
 
-  // ===== ホバー（PCのみ）=====
+  // ホバー（PCのみ）
   if (hoverImages[key]) {
-
     item.addEventListener('mouseenter', () => {
       if (window.innerWidth > 768) {
         previewImg.src = hoverImages[key];
@@ -499,38 +495,10 @@ navItems.forEach(item => {
         preview.style.opacity = 0;
       }
     });
-
   }
 });
 
-      navItems.forEach(i => i.classList.remove('active'));
-      sections.forEach(s => s.classList.remove('active'));
-
-      item.classList.add('active');
-      document.getElementById(key)?.classList.add('active');
-    }
-  });
-
-  // ===== ホバー（PC専用）=====
-  if (hoverImages[key]) {
-
-    item.addEventListener('mouseenter', () => {
-      if (window.innerWidth > 768) {
-        previewImg.src = hoverImages[key];
-        preview.style.opacity = 1;
-      }
-    });
-
-    item.addEventListener('mouseleave', () => {
-      if (window.innerWidth > 768) {
-        preview.style.opacity = 0;
-      }
-    });
-
-  }
-});
-  
-// モーダル
+// ===== モーダル =====
 document.querySelectorAll('.title').forEach(title => {
   title.addEventListener('click', () => {
     modalText.textContent = title.dataset.caption;
