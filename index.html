@@ -283,11 +283,11 @@ main {
     </div>
   </div>
 
-   <div class="work">
-    <div class="visual">
-      <img src="images/design/d_5-1.jpg">
-  　 </div>
-    <div class="work-info">
+<div class="work">
+  <div class="visual">
+    <img src="images/design/d_5-1.jpg">
+  </div>
+  <div class="work-info">
       <p class="title" data-caption="TokyoArtBookFair2024のNITESHAブースにて販売された写真文芸誌「FlowerPark」のデザインを担当。全てを一冊一冊手製本で仕上げた。">
         Flower Park, 2024</p>
       <p class="meta">poster</p>
@@ -524,6 +524,9 @@ document.querySelectorAll('.title').forEach(title => {
     }
 
     modal.classList.add('active');
+    modal.addEventListener('click', () => {
+  modal.classList.remove('active');
+});
   });
 });
 </script>
