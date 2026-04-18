@@ -118,9 +118,9 @@ main {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 150%;
   height: 100%;
-  background: #ffff;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -515,16 +515,21 @@ navItems.forEach(item => {
       transitionImg.src = hoverImages[key];
       transition.classList.add('active');
 
-      setTimeout(() => {
-        transition.classList.remove('active');
+// ① 先にページ切替
+navItems.forEach(i => i.classList.remove('active'));
+sections.forEach(s => s.classList.remove('active'));
 
-        navItems.forEach(i => i.classList.remove('active'));
-        sections.forEach(s => s.classList.remove('active'));
+item.classList.add('active');
+document.getElementById(key)?.classList.add('active');
 
-        item.classList.add('active');
-        document.getElementById(key)?.classList.add('active');
+// ② 画像表示
+transitionImg.src = hoverImages[key];
+transition.classList.add('active');
 
-      }, 3000);
+// ③ 3秒後に消す
+setTimeout(() => {
+  transition.classList.remove('active');
+}, 3000);
 
     } else {
 
