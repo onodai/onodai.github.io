@@ -363,22 +363,19 @@ main {
   </div>
 
   <div class="work">
-    <div class="visual">
-      <img src="images/art/a_2-1.jpg">
-    </div>
-     <div class="visual">
-      <img src="images/art/a_2-2.jpg">
-    </div>
-    <div class="work-info">
-     <p class="title"
-   data-caption="説明"
-   data-link="https://vimeo.com/1184366951?share=copy&fl=sv&fe=ci">
-        <em>walk between</em></p>
-      <p class="meta">video</p>
-<div class="modal">
-  <div class="modal-content">
-    <p class="modal-text"></p>
-    <a class="modal-link" target="_blank" rel="noopener noreferrer"></a>
+  <div class="visual">
+    <img src="images/art/a_2-1.jpg">
+  </div>
+  <div class="visual">
+    <img src="images/art/a_2-2.jpg">
+  </div>
+  <div class="work-info">
+    <p class="title"
+       data-caption="説明"
+       data-link="https://vimeo.com/1184366951?share=copy&fl=sv&fe=ci">
+      <em>walk between</em>
+    </p>
+    <p class="meta">video</p>
   </div>
 </div>
 
@@ -460,6 +457,13 @@ main {
   <span></span><span></span><span></span>
 </div>
 
+<div class="modal">
+  <div class="modal-content">
+    <p class="modal-text"></p>
+    <a class="modal-link" target="_blank" rel="noopener noreferrer"></a>
+  </div>
+</div>
+
 <script>
 const navItems = document.querySelectorAll('.top-nav span');
 const sections = document.querySelectorAll('.section');
@@ -524,10 +528,11 @@ document.querySelectorAll('.title').forEach(title => {
     }
 
     modal.classList.add('active');
-    modal.addEventListener('click', () => {
-  modal.classList.remove('active');
-});
   });
+});
+  // モーダル閉じる
+modal.addEventListener('click', () => {
+  modal.classList.remove('active');
 });
 </script>
 
