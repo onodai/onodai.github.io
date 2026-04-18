@@ -55,7 +55,12 @@ main {
 .work {
   margin-bottom: 60px;
 }
-
+@media (max-width: 768px) {
+  .work {
+    margin-bottom: 36px;
+  }
+}
+  
 .visual {
   margin-bottom: 10px;
 }
@@ -75,6 +80,11 @@ main {
   font-size: 15px;
   font-weight: 300;
   cursor: pointer;
+}
+  @media (max-width: 768px) {
+  .title {
+    font-size: 13px;
+  }
 }
 
 .title:hover {
@@ -140,6 +150,12 @@ main {
   padding: 32px;
   max-width: 480px;
   color: #96e189;
+}
+  @media (max-width: 768px) {
+  .modal-content {
+    width: calc(100% - 32px);
+    margin: 0 auto;
+  }
 }
 
   .modal-link {
