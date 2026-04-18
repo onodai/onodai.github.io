@@ -114,6 +114,33 @@ main {
   width: 100%;
 }
 
+  .mobile-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mobile-transition img {
+  width: 100%;
+  height: auto;
+  transform: rotate(90deg);
+  object-fit: cover;
+}
+
+/* 表示状態 */
+.mobile-transition.active {
+  opacity: 1;
+}
+
 /* ===== モーダル ===== */
 .modal {
   position: fixed;
@@ -452,6 +479,11 @@ main {
   <span></span><span></span><span></span>
 </div>
 
+/* ===== スマホホバー画像表示 ===== */
+  <div class="mobile-transition">
+  <img src="">
+</div>
+
 <script>
 const navItems = document.querySelectorAll('.top-nav span');
 const sections = document.querySelectorAll('.section');
@@ -469,35 +501,43 @@ const hoverImages = {
 };
 
 // ナビ切替
+const transition = document.querySelector('.mobile-transition');
+const transitionImg = transition.querySelector('img');
+
 navItems.forEach(item => {
   const key = item.dataset.section;
 
   item.addEventListener('click', () => {
-    navItems.forEach(i => i.classList.remove('active'));
-    sections.forEach(s => s.classList.remove('active'));
 
-    item.classList.add('active');
-    document.getElementById(key)?.classList.add('active');
-  });
-});
+    // スマホ時だけ演出
+    if (window.innerWidth <= 768 && hoverImages[key]) {
 
-// ホバー（PCのみ）
-if (window.innerWidth > 768) {
-  navItems.forEach(item => {
-    const key = item.dataset.section;
+      transitionImg.src = hoverImages[key];
+      transition.classList.add('active');
 
-    if (hoverImages[key]) {
-      item.addEventListener('mouseenter', () => {
-        previewImg.src = hoverImages[key];
-        preview.style.opacity = 1;
-      });
+      setTimeout(() => {
+        transition.classList.remove('active');
 
-      item.addEventListener('mouseleave', () => {
-        preview.style.opacity = 0;
-      });
+        // ページ切り替え
+        navItems.forEach(i => i.classList.remove('active'));
+        sections.forEach(s => s.classList.remove('active'));
+
+        item.classList.add('active');
+        document.getElementById(key)?.classList.add('active');
+
+      }, 1000);
+
+    } else {
+
+      // PC通常動作
+      navItems.forEach(i => i.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('active'));
+
+      item.classList.add('active');
+      document.getElementById(key)?.classList.add('active');
     }
   });
-}
+});
 
 // モーダル
 document.querySelectorAll('.title').forEach(title => {
