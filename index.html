@@ -130,18 +130,10 @@ main {
 }
 
 .mobile-transition img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  width: 100vw;
-  height: 100vh;
-  transform: translate(-50%, -50%) rotate(90deg);
-}
-  
-/* 表示状態 */
-.mobile-transition.active {
-  opacity: 1;
+  width: 100%;
+  height: auto;
+  transform: rotate(90deg);
+  object-fit: cover;
 }
 
 /* ===== モーダル ===== */
