@@ -113,34 +113,7 @@ main {
 .hover-preview img {
   width: 100%;
 }
-
-  .mobile-transition {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 150%;
-  height: 150%;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.mobile-transition img {
-  width: 100%;
-  height: auto;
-  transform: rotate(90deg);
-  object-fit: cover;
-}
   
-/* 表示状態 */
-.mobile-transition.active {
-  opacity: 1;
-}
-
 /* ===== モーダル ===== */
 .modal {
   position: fixed;
@@ -479,10 +452,6 @@ main {
   <span></span><span></span><span></span>
 </div>
 
-  <div class="mobile-transition">
-  <img src="">
-</div>
-
 <script>
 const navItems = document.querySelectorAll('.top-nav span');
 const sections = document.querySelectorAll('.section');
@@ -502,35 +471,37 @@ const hoverImages = {
 // ナビ切替
 const transition = document.querySelector('.mobile-transition');
 const transitionImg = transition.querySelector('img');
-
+  
 navItems.forEach(item => {
   const key = item.dataset.section;
 
-  // ===== クリック（スマホ演出）=====
+  // ===== クリック（共通）=====
   item.addEventListener('click', () => {
+    navItems.forEach(i => i.classList.remove('active'));
+    sections.forEach(s => s.classList.remove('active'));
 
-    if (window.innerWidth <= 768 && hoverImages[key]) {
+    item.classList.add('active');
+    document.getElementById(key)?.classList.add('active');
+  });
 
-      transitionImg.src = hoverImages[key];
-      transition.classList.add('active');
+  // ===== ホバー（PCのみ）=====
+  if (hoverImages[key]) {
 
-// ① 先にページ切替
-navItems.forEach(i => i.classList.remove('active'));
-sections.forEach(s => s.classList.remove('active'));
+    item.addEventListener('mouseenter', () => {
+      if (window.innerWidth > 768) {
+        previewImg.src = hoverImages[key];
+        preview.style.opacity = 1;
+      }
+    });
 
-item.classList.add('active');
-document.getElementById(key)?.classList.add('active');
+    item.addEventListener('mouseleave', () => {
+      if (window.innerWidth > 768) {
+        preview.style.opacity = 0;
+      }
+    });
 
-// ② 画像表示
-transitionImg.src = hoverImages[key];
-transition.classList.add('active');
-
-// ③ 3秒後に消す
-setTimeout(() => {
-  transition.classList.remove('active');
-}, 7000);
-
-    } else {
+  }
+});
 
       navItems.forEach(i => i.classList.remove('active'));
       sections.forEach(s => s.classList.remove('active'));
