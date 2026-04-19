@@ -220,8 +220,8 @@ main {
     <div class="work-info">
       <p class="title"
         data-caption=
-        "2025<br>
-        CL:Art Center NEW<br><br>
+        "2025||
+        CL:Art Center NEW||||
         横浜のアートスペースArt Center NEW が行う連続講座。横浜の街を舞台にしたワークショップで非アーティストに開かれた講座になっている。企画を聞いて実際に自身も街を歩きながら地面をフロッタージュしたものをビジュアルに使用した。また「地図」という言葉をキーワードとしてアイソメ図を想起させるデザインをほどこした。">
         <em>5つの都市の断面図<em></p>
       <p class="meta">flyer</p>
@@ -537,7 +537,9 @@ const modalLink = document.querySelector('.modal-link');
 document.querySelectorAll('.title').forEach(title => {
   title.addEventListener('click', () => {
     modalText.textContent = title.dataset.caption;
-
+    
+    const text = title.dataset.caption.split('||');
+    modalText.innerHTML = text.map(t => `<p>${t}</p>`).join('');
     const link = title.dataset.link;
 
     if (link) {
