@@ -159,7 +159,10 @@ main {
     margin: 0 auto;
   }
 }
-
+  
+.modal-text .spacer {
+  height: 16px;
+}
   .modal-link {
   display: block;
   margin-top: 16px;
@@ -221,7 +224,7 @@ main {
       <p class="title"
         data-caption=
         "2025||
-        CL:Art Center NEW||||
+        CL:Art Center NEW|| ||
         横浜のアートスペースArt Center NEW が行う連続講座。横浜の街を舞台にしたワークショップで非アーティストに開かれた講座になっている。企画を聞いて実際に自身も街を歩きながら地面をフロッタージュしたものをビジュアルに使用した。また「地図」という言葉をキーワードとしてアイソメ図を想起させるデザインをほどこした。">
         <em>5つの都市の断面図<em></p>
       <p class="meta">flyer</p>
@@ -539,8 +542,13 @@ document.querySelectorAll('.title').forEach(title => {
     modalText.textContent = title.dataset.caption;
     
     const text = title.dataset.caption.split('||');
-    modalText.innerHTML = text.map(t => `<p>${t}</p>`).join('');
-    const link = title.dataset.link;
+
+modalText.innerHTML = text.map(t => {
+  if (t.trim() === '') {
+    return '<p class="spacer"></p>';
+  }
+  return `<p>${t}</p>`;
+}).join('');
 
     if (link) {
       modalLink.href = link;
