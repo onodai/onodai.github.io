@@ -540,16 +540,18 @@ const modalLink = document.querySelector('.modal-link');
 
 document.querySelectorAll('.title').forEach(title => {
   title.addEventListener('click', () => {
-    modalText.textContent = title.dataset.caption;
-    
+
     const text = title.dataset.caption.split('||');
 
-modalText.innerHTML = text.map(t => {
-  if (t.trim() === '') {
-    return '<p class="spacer"></p>';
-  }
-  return `<p>${t}</p>`;
-}).join('');
+    modalText.innerHTML = text.map(t => {
+      if (t.trim() === '') {
+        return '<p class="spacer"></p>';
+      }
+      return `<p>${t}</p>`;
+    }).join('');
+
+    // 👇 これ追加（重要）
+    const link = title.dataset.link;
 
     if (link) {
       modalLink.href = link;
