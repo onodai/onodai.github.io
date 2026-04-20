@@ -196,15 +196,13 @@ main {
   }
 }
 
-  .mobile-only {
+.mobile-only {
   display: none;
 }
 
 @media (max-width: 768px) {
   .mobile-only {
     display: block;
-    width: 100%;
-    margin-top: 40px;
   }
 }
   
@@ -330,7 +328,11 @@ main {
     </div>
   </div>
           
-      <img src="images/d_top.png">
+<div class="work mobile-only">
+  <div class="visual">
+    <img src="images/d_top.png">
+  </div>
+</div>
       
 </section>
 
