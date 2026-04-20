@@ -194,8 +194,20 @@ main {
   .hover-preview {
     display: none;
   }
-
 }
+
+  .mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block;
+    width: 100%;
+    margin-top: 40px;
+  }
+}
+  
 </style>
 </head>
 
@@ -318,11 +330,8 @@ main {
     </div>
   </div>
           
-   <div class="work">
-    <div class="visual">
-      <img src="images/design/d_top.png">
-    </div>
-  </div> 
+      <img src="images/d_top.png">
+      
 </section>
 
   <!-- Photograph -->
