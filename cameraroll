@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>camera roll</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <style>
+    body {
+      margin: 0;
+      padding:  10px;
+      font-family: system-ui, sans-serif;
+    }
+
+    .feed {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .item {
+      margin-bottom: 32px;
+    }
+
+    .item img {
+      width: 100%;
+      display: block;
+    }
+
+    .timestamp {
+      margin-top: 10px;
+      text-align: right;
+      font-size: 12px;
+      color: #666;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 5px;
+      }
+
+      .feed {
+        max-width: none;
+        margin: 0;
+      }
+
+      .item {
+        margin-bottom: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="feed" id="feed"></div>
+
+  <script>
+    const API_URL =
+      "https://script.google.com/macros/s/AKfycbwnKCGF9XAjkUBjjy9UfSL7M1cKT7PJijeV98Sh2XMUBjPmxwwmKkIZExxL3L_MDdA8dw/exec";
+
+    const feed = document.getElementById("feed");
+
+    fetch(API_URL)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error("HTTP error " + res.status);
+        }
+        return res.json();
+      })
+      .then(items => {
+        // 新しい順に並び替え
+        items.sort(
+          (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+        );
+
+        items.forEach(item => {
+          const el = document.createElement("div");
+          el.className = "item";
+
+          const img = document.createElement("img");
+          img.src = item.image_url;
+          img.loading = "lazy";
+
+          const time = document.createElement("div");
+          time.className = "timestamp";
+          time.textContent =
+            new Date(item.timestamp).toLocaleString("ja-JP");
+
+          el.appendChild(img);
+          el.appendChild(time);
+          feed.appendChild(el);
+        });
+      })
+      .catch(err => {
+        feed.innerHTML =
+          "<p style='color:red;padding:16px'>" +
+          err.message +
+          "</p>";
+        console.error(err);
+      });
+  </script>
+
+</body>
+</html>
